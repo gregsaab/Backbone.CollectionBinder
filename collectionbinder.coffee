@@ -4,6 +4,8 @@ define ['backbone', 'underscore'], (Backbone, _) ->
 
   class CollectionBinder
     constructor: (@view, @collection, @template) ->
+	  regex = new RegExp "^[\\s\\w]*<([\\w]+)"
+      @topLevelElement = regex.exec(@template)[1]
 
     bind: () ->
       bindModel model for model in @collection.models

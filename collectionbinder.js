@@ -11,9 +11,12 @@
     return CollectionBinder = (function() {
 
       function CollectionBinder(view, collection, template) {
+        var regex;
         this.view = view;
         this.collection = collection;
         this.template = template;
+        regex = new RegExp("^[\\s\\w]*<([\\w]+)");
+        this.topLevelElement = regex.exec(this.template)[1];
       }
 
       CollectionBinder.prototype.bind = function() {
